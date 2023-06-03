@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="page pricing-table-page">
+    {% if user.is_authenticated %}
+    <section class="clean-block payment-form dark">
+        <div class="container">
+            <div class="block-heading">
+                <h1>Billing details</h1>
+            </div>
+            <form>
+                <div class="products">
+                    <h3 class="title">Checkout</h3>
+                    <div class="item"><span class="price" style="font-family: 'Anonymous Pro', monospace;">Price</span>
+                        <p class="item-name">Product name</p>
+                    </div>
+                    <div class="total"><span>Total</span><span class="price" style="font-family: 'Anonymous Pro', monospace;">total price</span></div>
+                </div>
+                <div class="card-details">
+                    <h3 class="title">Personal info/addresses</h3>
+                    <div class="row">
+                        <div class="col-sm-7" style="width: 100%;"> 
+                            <div class="mb-3"><label class="form-label" for="card_holder" name="name">Full name</label><input class="form-control" type="text" id="card_holder" placeholder="Card Holder" name="card_holder"></div>
+                        </div>
+                        <div class="col-sm-7" style="width: 100%;">
+                            <div class="mb-3"><label class="form-label" for="card_holder">City</label><input class="form-control" type="text" id="card_holder-4" placeholder="Card Holder" name="card_holder"></div>
+                        </div>
+                        <div class="col-sm-7" style="width: 100%;">
+                            <div class="mb-3"><label class="form-label" for="card_holder">Address</label><input class="form-control" type="text" id="card_holder-3" placeholder="Card Holder" name="card_holder"></div>
+                        </div>
+                        <div class="col-sm-7" style="width: 100%;">
+                            <div class="mb-3"><label class="form-label" for="card_holder">Email</label><input class="form-control" type="text" id="card_holder-2" placeholder="Card Holder" name="card_holder"></div>
+                        </div>
+                        <div class="col-sm-7" style="width: 100%;">
+                            <div class="mb-3"><label class="form-label" for="card_holder">telephone *</label><input class="form-control" type="text" id="card_holder-1" placeholder="Card Holder" name="card_holder"></div>
+                        </div>
+                        <div class="col-sm-7" style="width: 100%;">
+                            <div class="mb-3"><label class="form-label" for="card_holder">post code</label><input class="form-control" type="text" id="card_holder-5" placeholder="Card Holder" name="card_holder"></div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" style="background: var(--bs-green);">Proceed</button></div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+       
+    </section>
+    
+    </main>
+    {% else %}
+    <div class="global-container">
+        <div class="card login-form">
+        <div class="card-body">           
+            <h3 class="card-title text-center" style="margin-top: 50%;margin-bottom: 50%;">You have to be logged in to order a book online.</h3>
+            <div class="text-center">
+                <a class="btn btn-primary" href="{% url 'accounts:login_attempt' %}">Login</a>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    {% endif %}
+    {% endblock %}

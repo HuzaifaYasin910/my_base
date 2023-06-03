@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <main class="page" style="background: var(--bs-white);">
+        <section class="clean-block features" style="height: auto;min-height: 850px;background: var(--bs-white);color: rgb(0,0,0);">
+            <div class="container">
+                <div class="block-heading">
+                    <h1 style="font-family: Alatsi, sans-serif;margin-top: 30px;">Our Stores</h1>
+                </div>
+                <div class="row justify-content-center" style="background: var(--bs-orange);border-style: solid;border-radius: 39px;padding: 21px;">
+
+                    {% for store in stores %}
+                    <div class="col-md-5 feature-box" style="border-width: 1px;border-style: solid;border-radius: 1px;">
+                        
+                        
+                        <i class="icon-location-pin icon" data-aos="fade-up" data-aos-once="true" style="color: var(--bs-dark);"></i> &nbsp;&nbsp;
+                        <h4 style="color: var(--bs-dark);">{{store.City}}</h4>
+                        <p data-aos="fade" data-aos-once="true" style="color: var(--bs-gray-900);font-size: 16.4px;font-family: 'Anonymous Pro', monospace;">Contact:{{store.contact}}<br>address:{{store.address}}</p>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section>
+       
+    </main>
+    {% endblock %}

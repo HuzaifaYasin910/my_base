@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+    <main class="page pricing-table-page">
+        <section class="d-xl-flex d-xxl-flex justify-content-xl-center align-items-xl-center justify-content-xxl-center align-items-xxl-center" style="min-height: 700px;height: auto;margin-bottom: 116px;padding-top: 30px;padding-bottom: 56px;">
+            <div class="container" style="padding: 10px;width: 100%;height: auto;min-height: 681px;">
+                <div class="row d-flex d-sm-flex d-xl-flex justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-xl-center align-items-xl-center" style="background: var(--bs-white);padding: 17px;border-radius: 8px;width: 100%;height: auto;margin-right: 0px;margin-left: 0%;padding-right: 0px;padding-left: 0px;min-height: 618px;border-width: 0px;border-right: 11px solid var(--bs-red) ;">
+                    <div class="col-sm-6 col-lg-4 d-sm-flex justify-content-sm-center align-items-sm-center" style="padding-bottom: 6px;width: 290.656px;height: 567px;margin: 14px;margin-top: 2px;margin-right: 0px;margin-bottom: 2px;margin-left: 0px;padding-top: 6px;padding-right: 6px;padding-left: 6px;">
+                        <div class="card" style="width: 274.656px;height: 426.344px;margin-top: 38px;box-shadow: 0px 0px 7px;"><img class="card-img-top w-100 d-block" src="https://cdn.jsdelivr.net/gh/StaticUser123/statics@main/placeholder.png" style="width: 100%;height: 100%;"></div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 d-xl-flex justify-content-xl-center align-items-xl-center" style="padding-bottom: 6px;width: 618.656px;height: auto;min-height: 567px;margin: 14px;margin-top: 2px;margin-right: 0px;margin-bottom: 2px;margin-left: 0px;padding-top: 6px;padding-right: 6px;padding-left: 6px;">
+                        <div class="card" style="width: 100%;height: 100%;min-height: 490px;">
+                            <div class="card-body" style="height: 100%;width: 100%;padding: 14px;padding-bottom: 0px;"><a class="card-link" href="{% url 'stores:author-detail' book.author.pk %}">
+                                    <h5 style="font-family: Alatsi, sans-serif;color: var(--bs-orange);">{{book.author}}</h5>
+                                </a>
+                                <h3 class="card-title" style="font-family: Alatsi, sans-serif;color: var(--bs-dark);">{{book.title}}</h3>
+                                <div class="dropdown" style="padding-bottom: 14px;"><a href="{% url 'stores:orders' book.id %}"><button class="btn btn-primary dropdown-toggle" aria-expanded="false"  type="button" style="background: var(--bs-orange);border: 2px solid var(--bs-dark);font-family: Alatsi, sans-serif;color: var(--bs-dark);width: 100%;">Shop Now</button></a>
+                                    
+                                </div>
+                                <h4 class="card-title" style="font-family: Alatsi, sans-serif;color: var(--bs-dark);border-top-style: solid;">Summary</h4>
+                                <p class="card-text">{{book.summary}}</p>
+                                <div class="d-flex" style="border-top-width: 1px;border-top-style: solid;">
+                                    <div style="width: 50%;">
+                                        <h5 style="font-family: Alatsi, sans-serif;">ISBN:</h5>
+                                    </div>
+                                    <div class="text-end" style="width: 50%;">
+                                        <h4 style="font-family: 'Anonymous Pro', monospace;">{{book.isbn}}</h4>
+                                    </div>
+                                </div>
+                                <div class="d-flex" style="border-top-width: 1px;">
+                                    <div style="width: 50%;">
+                                        <h5 style="font-family: Alatsi, sans-serif;">Genre:</h5>
+                                    </div>
+                                    <div class="text-end" style="width: 50%;"><a href="{% url 'stores:books' book.genre.id %}">
+                                            <h4 style="font-family: Alatsi, sans-serif;color: var(--bs-gray-800);">{{book.genre}}</h4>
+                                        </a></div>
+                                </div>
+                                <div class="d-flex" style="border-top-width: 1px;border-top-style: solid;">
+                                    <div style="width: 50%;">
+                                        <h5 style="font-family: Alatsi, sans-serif;">Price:</h5>
+                                    </div>
+                                    <div class="text-end" style="width: 50%;">
+                                        <h4 style="font-family: 'Anonymous Pro', monospace;">{{book.price}} $</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    {% endblock %}

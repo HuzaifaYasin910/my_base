@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <main class="page contact-us-page">
+        <section class="clean-block clean-form dark" style="min-height: 750px;height: auto;">
+            {% if user.is_superuser  %}
+            
+            <footer style="background: rgb(0,0, 0);padding: 70px 50px;margin: 0px 0px 0px;">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4 footer-navigation">
+                        <h3><a href="#" style="font-size: 36px;font-family: Alatsi, sans-serif;color: var(--bs-orange);">Total books:</a></h3>
+                        <p class="links"><strong>&nbsp;{{total_books}}</strong></p>
+                    </div>
+                    <div class="col-sm-6 col-md-4 footer-navigation">
+                        <h3><a href="#" style="font-size: 36px;font-family: Alatsi, sans-serif;color: var(--bs-orange);">Stores:</a></h3>
+                        <p class="links"><a href="#">Home</a><strong>&nbsp;</strong></p>
+                    </div>
+                </div>
+            </footer>
+        </section>
+        {% else %}
+
+        <div class="global-container mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title text-center " >This panel is only for Administration!</h3>
+                    <div class="card-text text-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        {% endif %}
+
+    </main>
+{% endblock %}
