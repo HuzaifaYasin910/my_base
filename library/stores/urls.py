@@ -18,5 +18,4 @@ urlpatterns = [
     path('policies/', policies, name='policies'),
     path('orders/<int:book_id>/', orders_view, name='orders'),
 
-
 ]

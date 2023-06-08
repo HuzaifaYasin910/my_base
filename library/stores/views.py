@@ -80,6 +80,9 @@ def books(request,genre_id):
 
 def author(request):
     authors = Author.objects.all()
+    p = Paginator(authors,15)    
+    page = request.GET.get('page')
+    authors = p.get_page(page)
     return render(request,'stores/authors.html',{'authors':authors})
 
 def author_detail(request, author_pk):

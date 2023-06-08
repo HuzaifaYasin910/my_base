@@ -25,28 +25,24 @@
 
                     {% endfor %}
 
+
                 </div>
+                <nav>
+                    <div class="pagination p1" style="margin-left: 40%;">
+                        <ul>
+                          {% if authors.has_previous %}
+                          <a href="?page={{authors.previous_page_number}}"><li>&lt;</li></a>
+                          {%  endif %}
+                          <a class="is-active" href="?page={{authors.number}}"><li>{{authors.number}}</li></a>
+                          {% if authors.has_next %}                                          
+                          <a href="?page={{authors.next_page_number}}"><li>&gt;</li></a>
+                          {% endif %}
+                          
+                        </ul>
+                      </div>
+                </nav>
             </div>
+            
         </section>
-        <section style="min-height: 59px;">
-            <div class="container d-flex" id="paginator" style="color: var(--bs-orange);border-style: solid;border-color: var(--bs-dark);padding-right: 0px;padding-left: 2px;border-radius: 22px;">
-                <div class="d-sm-flex justify-content-xl-center align-items-xl-center" style="width: 20%;height: 100%;">
-                    <h2 class="d-flex justify-content-start" style="height: 100%;">&lt;&lt;</h2>
-                </div>
-                <div class="d-sm-flex justify-content-sm-center justify-content-xxl-center" style="width: 20%;height: 100%;border-color: var(--bs-dark);border-right-width: 1px;border-right-style: solid;border-left-width: 1px;border-left-style: solid;">
-                    <h2 class="text-center d-xl-flex d-xxl-flex align-items-xl-center align-items-xxl-center" style="height: 100%;">1</h2>
-                </div>
-                <div class="d-sm-flex justify-content-sm-center justify-content-xxl-center" style="width: 20%;height: 100%;border-color: var(--bs-dark);border-right-width: 1px;border-right-style: solid;border-left-width: 1px;border-left-style: solid;">
-                    <h2 class="text-center d-xl-flex d-xxl-flex align-items-xl-center align-items-xxl-center" style="height: 100%;">1</h2>
-                </div>
-                <div class="d-sm-flex justify-content-sm-center justify-content-xxl-center" style="width: 20%;height: 100%;border-color: var(--bs-dark);border-right-width: 1px;border-right-style: solid;border-left-width: 1px;border-left-style: solid;">
-                    <h2 class="text-center d-xl-flex d-xxl-flex align-items-xl-center align-items-xxl-center" style="height: 100%;">1</h2>
-                </div>
-                <div class="d-sm-flex justify-content-sm-center" style="width: 20%;height: 100%;">
-                    <h2 class="d-flex d-xl-flex justify-content-end align-items-xl-center" style="height: 100%;">&gt;&gt;</h2>
-                </div>
-            </div>
-        </section>
-        <section></section>
     </main>
     {% endblock %}
