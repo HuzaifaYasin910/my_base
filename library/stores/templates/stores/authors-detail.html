@@ -1,79 +1,66 @@
 {% extends 'base.html' %}
 {% block content %}
-
-    <main class="page">
-        <section class="clean-block clean-pricing dark" style="height: 204px;color: var(--bs-dark);background: var(--bs-orange);">
-            <div class="container">
-                <div class="block-heading">
-                    <h1 style="font-family: Alatsi, sans-serif;">{{ author.name }}</h1>
-                </div>
+<main class="page">
+    <section class="clean-block clean-pricing dark"
+        style="height: 190px;color: var(--bs-dark);background: var(--bs-orange);padding-top: 31px;padding-bottom: 5px;">
+        <div class="container">
+            <div class="block-heading">
+                <h1 style="font-family: Alatsi, sans-serif;font-size: 28.1px;">{{author.name}}</h1>
             </div>
-        </section>
-        <section style="padding: 0px;padding-top: 91px;">
-            <div>
-                <ul class="nav nav-tabs d-flex d-md-flex d-lg-flex d-xl-flex justify-content-center justify-content-md-center justify-content-lg-center justify-content-xl-center" role="tablist">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-1" style="font-family: Alatsi, sans-serif;font-size: 22px;color: var(--bs-orange);">Books</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2" style="font-size: 21px;font-family: Alatsi, sans-serif;color: var(--bs-dark);">Biography</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active" role="tabpanel" id="tab-1" style="min-height: 120px;height: auto;">
-                        <div class="container" style="padding: 77px;">
-                            <h1 class="text-center" style="font-family: Alatsi, sans-serif;">Books from this author</h1>
-                            <div class="row g-0 d-flex d-xxl-flex justify-content-center align-items-center justify-content-xxl-center align-items-xxl-center" style="width: 100%;border-top-width: 1px;border-top-style: solid;border-bottom-style: solid;">
-                                
-                                <div class="col-md-6 col-lg-4 d-flex justify-content-center align-items-center" id="art--3" style="min-height: 415px;height: auto;padding-right: 3px;padding-left: 3px;width: 179px;margin-top: 25px;border-right-width: 1px;border-right-color: var(--bs-gray);border-left-width: 1px;border-left-color: var(--bs-gray);margin-right: 6px;">
-                                {% if author %}
-                                
-                                {% for book in books %}
-                                <a href="{% url 'stores:book_detail' book.id%}"> 
-      
-                                
-                                    <div style="min-height: 360px;width: 250px;height: auto;margin-left: 10px;">
-                                        <div style="width: 100%;margin-bottom: 7px;"><img style="width: 100%;height: auto;" src="https://cdn.jsdelivr.net/gh/StaticUser123/statics@main/placeholder.png"></div>
-                                        <div style="height: auto;min-height: 80px;">
-                                            <h5 class="text-center" style="font-family: Alatsi, sans-serif;">{{ book.title }}</h5>
-                                        </div>
+        </div>
+    </section>
+    <section style="padding: 0px;padding-top: 91px;min-height: 490px;height: auto;">
+        <div>
+            <ul class="nav nav-tabs d-flex d-md-flex d-lg-flex d-xl-flex justify-content-center justify-content-md-center justify-content-lg-center justify-content-xl-center"
+                role="tablist">
+                <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab"
+                        href="#tab-1"
+                        style="font-family: Alatsi, sans-serif;font-size: 22px;color: var(--bs-orange);">Books</a></li>
+                <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab"
+                        href="#tab-2"
+                        style="font-size: 21px;font-family: Alatsi, sans-serif;color: var(--bs-dark);">Biography</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" role="tabpanel" id="tab-1" style="min-height: 120px;height: auto;">
+                    <div class="container" style="padding: 77px;">
+                        <h1 class="text-center" style="font-family: Alatsi, sans-serif;">Books from this author</h1>
+                        <div class="row g-0 d-flex d-xxl-flex justify-content-center align-items-center justify-content-xxl-center align-items-xxl-center"
+                            style="width: 100%;border-top-width: 1px;border-top-style: solid;border-bottom-style: solid;">
+                            {% if author %}
+                            {% for book in books %}
+                            <div class="col-md-6 col-lg-4 d-flex justify-content-center align-items-center" id="art--3"
+                                style="min-height: 415px;height: auto;padding-right: 3px;padding-left: 3px;width: 179px;margin-top: 25px;border-right-width: 1px;border-right-color: var(--bs-gray);border-left-width: 1px;border-left-color: var(--bs-gray);margin-right: 6px;">
+                                <div style="min-height: 360px;width: 276.984px;height: auto;">
+                                    <div style="width: 100%;margin-bottom: 7px;"><a
+                                            href="{% url 'stores:book_detail' book.id%}"><img
+                                                style="width: 100%;height: auto;"
+                                                src="https://cdn.jsdelivr.net/gh/StaticUser123/statics@main/placeholder.png">
                                     </div>
-                                
-                                </a>
-                                {% endfor %}
-                                {% else %}
-                                No books found for this author.
-                                {% endif %}
+                                    <div style="height: auto;min-height: 80px;">
+                                        <h5 class="text-center" style="font-family: Alatsi, sans-serif;">{{book.title}}
+                                        </h5></a>
+                                    </div>
                                 </div>
-                                
-                                
                             </div>
-                            <section style="min-height: 59px;margin-top: 19px;">
-                                <div class="container d-flex" id="paginator" style="color: var(--bs-orange);border-style: solid;border-color: var(--bs-dark);padding-right: 0px;padding-left: 2px;border-radius: 20px;">
-                                    <div class="d-sm-flex justify-content-xl-center align-items-xl-center" style="width: 20%;height: 100%;">
-                                        <h2 class="d-flex justify-content-start" style="height: 100%;">&lt;&lt;</h2>
-                                    </div>
-                                    <div class="d-sm-flex justify-content-sm-center justify-content-xxl-center" style="width: 20%;height: 100%;border-color: var(--bs-dark);border-right-width: 1px;border-right-style: solid;border-left-width: 1px;border-left-style: solid;">
-                                        <h2 class="text-center d-xl-flex d-xxl-flex align-items-xl-center align-items-xxl-center" style="height: 100%;">1</h2>
-                                    </div>
-                                    <div class="d-sm-flex justify-content-sm-center justify-content-xxl-center" style="width: 20%;height: 100%;border-color: var(--bs-dark);border-right-width: 1px;border-right-style: solid;border-left-width: 1px;border-left-style: solid;">
-                                        <h2 class="text-center d-xl-flex d-xxl-flex align-items-xl-center align-items-xxl-center" style="height: 100%;">1</h2>
-                                    </div>
-                                    <div class="d-sm-flex justify-content-sm-center justify-content-xxl-center" style="width: 20%;height: 100%;border-color: var(--bs-dark);border-right-width: 1px;border-right-style: solid;border-left-width: 1px;border-left-style: solid;">
-                                        <h2 class="text-center d-xl-flex d-xxl-flex align-items-xl-center align-items-xxl-center" style="height: 100%;">1</h2>
-                                    </div>
-                                    <div class="d-sm-flex justify-content-sm-center" style="width: 20%;height: 100%;">
-                                        <h2 class="d-flex d-xl-flex justify-content-end align-items-xl-center" style="height: 100%;">&gt;&gt;</h2>
-                                    </div>
-                                </div>
-                            </section>
+                            {% endfor %}
+                            {% else %}
+                            No books found for this author.
+                            {% endif %}
                         </div>
                     </div>
-                    <div class="tab-pane" role="tabpanel" id="tab-2" style="padding-right: 40px;padding-left: 40px;min-height: 350px;height: auto;">
-                        <div class="card">
-                            <div class="card-body text-center" style="height: 344px;padding-right: 10px;padding-left: 10px;">
-                                <p class="card-text" style="font-family: Cookie, serif;font-size: 26px;">{{ author.biography }}</p>
-                            </div>
+                </div>
+                <div class="tab-pane" role="tabpanel" id="tab-2"
+                    style="padding-right: 40px;padding-left: 40px;min-height: 350px;height: auto;">
+                    <div class="card">
+                        <div class="card-body text-center"
+                            style="padding-right: 10px;padding-left: 10px;min-height: 344px;height: auto;">
+                            <p class="card-text" style="font-size: 20px;">{{ author.biography }}</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
-    {% endblock %}
+        </div>
+    </section>
+</main>
+{% endblock %}

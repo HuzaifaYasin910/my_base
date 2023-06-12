@@ -73,7 +73,7 @@ p, li, a{
 }
 
 .cf {
-    *zoom: 1;
+    zoom: 1;
 }
 
 /* GENERAL STYLES */
@@ -137,7 +137,12 @@ img:hover{
 
 .card-title{ font-weight:300; }
 
-
+.disabled-div {
+    opacity: 0.6; /* Reduce opacity to visually indicate disabled state */
+    pointer-events: none; /* Disable pointer events to make it unclickable */
+    cursor: not-allowed; /* Show "not-allowed" cursor on hover */
+   
+  }
 
 .login-form{ 
 	width:330px;
@@ -154,14 +159,14 @@ img:hover{
 	font-size: 13px;
 	margin-top:20px;
 }
-    a{
-        text-decoration: none;
-        color: black;
-    }
-    li{
-        list-style-type: none;
-        list-style: none;
-    }
+a{
+    text-decoration: none;
+    color: black;
+}
+li{
+    list-style-type: none;
+    list-style: none;
+}
 </style>
 <body>
     <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar" style="padding-bottom: 20px;padding-top: 22px;border-color: rgb(255,255,255);border-bottom: 3px solid var(--bs-orange) ;">
@@ -171,7 +176,7 @@ img:hover{
                     <li class="nav-item"><a class="nav-link" href="{% url 'stores:home' %}" style="color: var(--bs-orange);font-size: 15.8px;filter: saturate(200%);">Home</a></li>                   
                     <li class="nav-item"><a class="nav-link" href="{% url 'stores:genre' %}" style="color: var(--bs-gray-900);font-size: 15.8px;font-family: Alatsi, sans-serif;">books</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'stores:author' %}" style="color: var(--bs-gray-900);font-size: 15.8px;font-family: Alatsi, sans-serif;">authors</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login_attempt' %}" style="color: var(--bs-grey);font-size: 15.8px;font-family: Alatsi, sans-serif;">Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login_attempt' %}" style="color: var(--bs-grey);font-size: 15.8px;font-family: Alatsi, sans-serif;">{% if user.is_authenticated %} Account {% else %} Login {% endif %}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'accounts:register_attempt' %}" style="color: var(--bs-grey);font-size: 15.8px;font-family: Alatsi, sans-serif;">Signup</a></li>
                 </ul>
             </div>

@@ -20,9 +20,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-def home(request):
-    
-    return render(request , 'accounts/home.html')
+
 
 
 
@@ -34,22 +32,22 @@ def login_attempt(request):
         user_obj = User.objects.filter(username = username).first()
         if user_obj is None:
             messages.success(request, 'User not found.')
-            return redirect('/login')
+            return redirect('/profile-login')
         
         
         profile_obj = Profile.objects.filter(user = user_obj ).first()
 
         if not profile_obj.is_verified:
             messages.success(request, 'Profile is not verified check your mail.')
-            return redirect('/login')
+            return redirect('//profile-login')
 
         user = authenticate(username = username , password = password)
         if user is None:
             messages.success(request, 'Wrong password.')
-            return redirect('/login')
+            return redirect('//profile-login')
         
         login(request , user)
-        return redirect('/profile')
+        return redirect('/profile-login')
 
     return render(request , 'accounts/login.html')
 
@@ -65,7 +63,6 @@ def register_attempt(request):
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
-        print(password)
 
         try:
             if User.objects.filter(username = username).first():
@@ -98,7 +95,7 @@ def success(request):
 
 def token_send(request):
     token_sent= True
-    return render(request , 'accounts/home.html',{'token_sent':token_sent})
+    return render(request , 'accounts/token_send.html',{'token_sent':token_sent})
 
 
 
@@ -129,7 +126,7 @@ def error_page(request):
 
 def send_email(email,token):
     
-    subject = 'Your accounts need to be verified'
+    subject = 'Your account needs to be verified'
     message = f"Hi please click the link to verify your account http://127.0.0.1:8000/verify/{token} \n please ignore this email if this weren't you "
     msg = MIMEText(message)
     msg['Subject'] = subject

@@ -4,11 +4,17 @@
 {% if user.is_authenticated %}
 
 <div class="global-container">
-    <div class="card login-form">
+        <div class="card text-center">
+            <h1>User Profile</h1>
         <div class="card-body">
-            <h3 class="card-title text-center">You are already LoggedIn </h3>
+            {% if user.is_authenticated %}
+            <h3 class="card-title text-center">Welcome, {{request.user.username}}</h3>
+            {% else %}
+            <h3 class="card-title text-center">you are not logedin</h3>
+            {% endif %}
             <div class="text-center">
                 <a class="btn btn-primary" href="{% url 'accounts:logout' %}">Logout</a>
+            </div>
             </div>
         </div>
     </div>
@@ -17,9 +23,7 @@
 
 {% else %}
 
-form{
-	
-}
+
 
 
 

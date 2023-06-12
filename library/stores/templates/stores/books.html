@@ -49,7 +49,7 @@
                                     </div>
 
                                     {% empty %}
-                                    <p>No books found for this genre.</p>
+                                    <h3>No books found for this genre.</h3>
                                     {% endfor %}
                                    
                                     <nav>
@@ -58,7 +58,7 @@
                                               {% if books.has_previous %}
                                               <a href="?page={{books.previous_page_number}}"><li>&lt;</li></a>
                                               {%  endif %}
-                                              <a class="is-active" href="?page={{books.number}}"><li>{{books.number}}</li></a>
+                                              <a class="is-active" href=""><li>{{books.number}}</li></a>
                                               {% if books.has_next %}                                          
                                               <a href="?page={{books.next_page_number}}"><li>&gt;</li></a>
                                               {% endif %}

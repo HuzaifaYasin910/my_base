@@ -8,6 +8,13 @@
             <div class="block-content" style="min-height: none;height: 100%;">
                 <div class="post-body"
                     style="padding-right: 10px;padding-left: 10px;padding-top: 50px;min-height: none;height: 100%;padding-bottom: 76px;">
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-danger">
+                            {{ message }}
+                            </div>
+                            {% endfor %}
+                            {% endif %}
                     <figure class="figure"
                         style="min-width: 5px;width: 96%;margin-left: 2%;border-bottom-style: solid;"><video width="560" height="315"
                         autoplay="" loop="" muted="" style="height: auto;width: 100%;">
@@ -33,7 +40,7 @@
                                     <h3 class="text-capitalize text-center" data-bs-toggle="tooltip" data-bss-tooltip=""
                                         data-bs-placement="bottom" title="sdfgh"
                                         style="font-size: 22.4px;font-family: Alatsi, sans-serif;width: 100%;background: var(--bs-orange);filter: saturate(171%);margin-bottom: 0px;height: 27px;">
-                                        Search books</h3><!-- Start: full-screen-navbar-search -->
+                                        Search books</h3>
                                     <section>
                                         <div
                                             style="width: 100%;margin-bottom: 0px;height: 265px;border-bottom-style: solid;">
@@ -162,62 +169,35 @@
 
 
 
-<!--========================================================================================================================================================================================-->
-
-
-
-
-
-                    <h2
-                        style="font-family: Alatsi, sans-serif;padding-top: 12px;padding-bottom: 38px;padding-left: 17px;border-top-style: solid;">
-                        Random NN Suggestions</h2>
-                    <div class="row g-0 d-flex d-xxl-flex justify-content-center align-items-center justify-content-xxl-center align-items-xxl-center"
-                        style="width: 100%;">
-
-
-
-                        <div class="col-md-6 col-lg-4 d-flex justify-content-center align-items-center" id="art--5"
-                            style="min-height: 415px;height: auto;padding-right: 19px;padding-left: 19px;width: 249px;margin-top: 5px;border-right-width: 1px;border-right-color: var(--bs-gray);border-left-width: 1px;border-left-color: var(--bs-gray);margin-right: 8px;">
-                            <div style="min-height: 360px;width: 276.984px;height: auto;">
-                                <div style="width: 100%;margin-bottom: 7px;"><img style="width: 100%;height: auto;"
-                                        src="https://cdn.jsdelivr.net/gh/StaticUser123/statics@main/placeholder.png">
-                                </div>
-                                <div style="height: auto;min-height: 80px;">
-                                    <h5 class="text-center" style="font-family: Alatsi, sans-serif;">heading</h5>
-                                    <h6 class="text-center"
-                                        style="font-family: Alatsi, sans-serif;color: var(--bs-orange);padding-top: 0px;padding-right: 0px;">
-                                        heading</h6>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
 
                     
 <!--========================================================================================================================================================================================-->
 
 
-            <div class="row"
-                        style="margin-right: 0px;margin-left: 0px;margin-top: 20px;padding-top: 20px;border-top-style: solid;">
-                        <div class="col-md-6"
-                            style="width: 100%;margin-left: 0%;padding-right: 0px;padding-left: 0px;border-right-width: 1px;border-bottom-style: solid;border-left-width: 1px;border-left-color: var(--bs-gray);">
-                            <figure class="figure" style="width: 92%;margin-left: 3%;"><video width="560" height="315"
-                                    autoplay="" loop="" muted="" style="height: auto;width: 100%;">
-                                    <source src="https://cdn.jsdelivr.net/gh/StaticUser123/statics@main/Find%20every.mp4"
-                                        type="video/mp4">
-                                </video><a href="{% url 'stores:stores' %}">
-                                    <h4
-                                        style="font-size: 17px;padding: 0px;font-family: Alatsi, sans-serif;color: var(--bs-orange);">
-                                        Check Stores &gt;&gt;</h4>
-                                </a></figure>
-                        </div>
-                    </div>
-                    <section class="login-clean" style="background: var(--bs-white);padding-top: 70px;padding-bottom: 0px;">
+            <div class="row" style="margin-right: 0px;margin-left: 0px;margin-top: 20px;padding-top: 20px;border-top-style: solid;">
+                <div class="col-md-6" style="width: 100%;margin-left: 0%;padding-right: 0px;padding-left: 0px;border-right-width: 1px;border-bottom-style: solid;border-left-width: 1px;border-left-color: var(--bs-gray);">
+                    <figure class="figure" style="width: 92%;margin-left: 3%;">
+                        <video width="560" height="315" autoplay="" loop="" muted="" style="height: auto;width: 100%;">
+                           <source src="https://cdn.jsdelivr.net/gh/StaticUser123/statics@main/Find%20every.mp4" type="video/mp4">
+                        </video>
+                        <a href="{% url 'stores:stores' %}"><h4 style="font-size: 17px;padding: 0px;font-family: Alatsi, sans-serif;color: var(--bs-orange);">Check Stores &gt;&gt;</h4></a>
+                    </figure>
+                </div>
+            </div>
+                                <section class="login-clean" style="background: var(--bs-white);padding-top: 70px;padding-bottom: 0px;" id="newsletter">
                         <form method="post" style="border-style: solid;">
+                            {% csrf_token %}
                             <h2 class="visually-hidden">Login Form</h2>
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-info">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                            {% endif %}
                             <h4 class="text-center" style="font-family: Alatsi, sans-serif;height: 40px;padding-top: 0px;padding-bottom: 0px;">Join our Newsletter</h4>
                             <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email" style="font-family: 'Anonymous Pro', monospace;"></div>
-                            <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password" style="font-family: 'Anonymous Pro', monospace;"></div>
+                            <div class="mb-3"><input class="form-control" type="text" name="name" placeholder="Password" style="font-family: 'Anonymous Pro', monospace;"></div>
                             <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" style="background: var(--bs-orange);font-family: Alatsi, sans-serif;">Join</button></div>
                         </form>
                     </section>
