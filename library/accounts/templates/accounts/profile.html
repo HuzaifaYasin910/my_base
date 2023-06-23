@@ -1,0 +1,69 @@
+{% extends "base.html"%}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<main class="page">
+    <section class="register-photo" style="height: auto;border-color: rgb(33, 37, 41);background: var(--bs-white);min-height: 830px; display: flex;justify-content: center;align-items: center;">
+        <div class="form-container" style="width: 370px;min-width: 346px;border-radius: 20px;">
+            <div class="container" style="min-width: 346px;width: auto;border-radius: 20px;">
+                <div class="row">
+                    <div class="col-md-12" style="padding-top: 12px;color: var(--bs-orange);background: var(--bs-yellow);border-top-left-radius: 20px;border-top-right-radius: 20px;border-width: 11px;border-color: rgba(0,0,0,0.12);border-bottom-width: 0px;border-bottom-style: solid;">
+                        <div>
+                            <div class="dropdown"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: rgba(13,110,253,0);border-color: rgba(255,255,255,0);"><i class="fa fa-gear" style="font-size: 26px;"></i></button>
+                                <div class="dropdown-menu"><a class="dropdown-item" href="#">Delete Account</a><a class="dropdown-item" href="#">Second Item</a><a class="dropdown-item" href="#">Third Item</a></div>
+                            </div>
+                        </div>
+                        <h2 class="text-center" style="font-family: Alatsi, sans-serif;margin: 21px 0px 8px;margin-top: 20px;color: var(--bs-white);">{{request.user.username}}</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="padding-top: 9px;background: var(--bs-gray-200);border-bottom: 2px solid var(--bs-gray-500);padding-right: 0px;padding-left: 0px;">
+                        
+                        <div>
+                            <ul class="nav nav-tabs d-inline" role="tablist">
+                                <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-1" style="background: var(--bs-white);">
+                                        <h2 style="font-family: Montserrat, sans-serif;height: 41px;padding: 0px;padding-left: 3px;padding-right: 3px;background: var(--bs-white);padding-top: 7px;font-size: 23px;color: var(--bs-gray-600);margin-bottom: 0px;">&nbsp;<i class="fa fa-list-alt" style="color: var(--bs-yellow);"></i>&nbsp; Orders&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<i class="fa fa-chevron-right" style="color: var(--bs-gray);"></i></h2>
+                                    </a></li>
+                                <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2" style="background: var(--bs-white);">
+                                        <h2 style="font-family: Montserrat, sans-serif;height: 41px;padding: 0px;padding-left: 3px;padding-right: 3px;background: var(--bs-white);padding-top: 7px;font-size: 23px;color: var(--bs-gray-600);">&nbsp;<i class="fa fa-heart" style="color: var(--bs-red);"></i>&nbsp; WishList&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<i class="fa fa-chevron-right" style="color: var(--bs-gray);"></i></h2>
+                                    </a></li>
+                                <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-3" style="background: var(--bs-white);">
+                                        <h2 style="font-family: Montserrat, sans-serif;height: 41px;padding: 0px;padding-left: 3px;padding-right: 3px;background: var(--bs-white);padding-top: 7px;font-size: 23px;color: var(--bs-gray-600);">&nbsp;<i class="fa fa-check" style="color: var(--bs-green);"></i>&nbsp; Safe Account&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<i class="fa fa-chevron-right" style="color: var(--bs-gray);"></i></h2>
+                                    </a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" role="tabpanel" id="tab-1">
+                                    <div style="background: var(--bs-white);">
+                                        <div style="background: var(--bs-yellow);">{% for order in orders %}
+                                            <p style="margin-bottom: 6px;padding-left: 3px;font-family: Alatsi, sans-serif;">you ordered :{{order.book_title}}</p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="tab-2">
+                                    <div style="height: auto;">
+                                        <div style="height: 35px;"><a href="#">
+                                                <p style="padding-left: 3px;color: var(--bs-white);background: var(--bs-red);margin-bottom: 6px;font-family: Alatsi, sans-serif;height: 34px;">Wish book name</p>
+                                            </a></div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" role="tabpanel" id="tab-3">
+                                    <p>Content for tab 3.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6" style="border-bottom-left-radius: 20px;background: var(--bs-yellow);width: 100%;padding-top: 5px;border-bottom-right-radius: 20px;"><a href="{% url 'accounts:logout' %}">
+                            <h3 style="font-family: Alatsi, sans-serif;text-align: center;color: var(--bs-white);">Logout</h3>
+                        </a></div>
+                </div>
+            </div>
+        </div> 
+    </section>
+</main>
+{% endif %}
+
+{% endblock %}

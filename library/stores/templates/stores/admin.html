@@ -1,0 +1,162 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_superuser %}
+<main class="page contact-us-page">
+<section class="clean-block clean-form dark" style="min-height:750px;height:auto;background:var(--bs-white)">
+<div style="min-height:714px;background:var(--bs-white)">
+<div class="text-center" style="min-height:81px;padding-top:59px;background:var(--bs-orange)">
+<h1 style="font-family:Alatsi,sans-serif">Administration</h1>
+</div>
+<div style="margin-top:0">
+<ul class="nav nav-tabs d-flex d-xxl-flex justify-content-center align-items-center justify-content-xxl-center" role="tablist" style="margin-top:-8px;background:var(--bs-orange)">
+<li class="nav-item" role="presentation" style="background:var(--bs-orange)"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-1" style="font-family:Alatsi,sans-serif;color:var(--bs-dark)">Orders(Total orders)</a></li>
+<li class="nav-item" role="presentation" style="background:var(--bs-orange)"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#tab-2" style="color:var(--bs-dark);font-family:Alatsi,sans-serif">Add Forms</a></li>
+<li class="nav-item" role="presentation" style="background:var(--bs-orange)"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#tab-3" style="color:var(--bs-dark);font-family:Alatsi,sans-serif">Info</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane" role="tabpanel" id="tab-1" style="padding-top:13px">
+<div class="container">
+<div class="row">
+<div class="col-md-12" style="padding-top:10px;padding-bottom:10px;background:#e46203;border-width:0;border-style:solid;border-radius:11px">
+<div>
+<h1 class="text-center" style="color:var(--bs-white);font-family:Alatsi,sans-serif">Orders</h1>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-3" style="width:100%;padding-right:0;padding-left:0">
+{% for order in orders %}
+<a href="{% url 'stores:order_action' order.pk %}">
+<div class="card" style="border-radius:9px">
+<div class="card-body" style="border-bottom:1px solid var(--bs-gray-400)">
+<h4 class="card-title" style="font-family:Alatsi,sans-serif;color:var(--bs-dark)">{{order.book_title}}</h4>
+<p class="card-text" style="margin-bottom:1px;color:var(--bs-dark)">Customer name: {{order.name}}</p>
+<p class="card-text" style="margin-bottom:1px;color:var(--bs-dark)">Address: {{order.address}}</p>
+<p class="card-text" style="margin-bottom:1px;color:var(--bs-dark)">Total:{{order.book_price}} </p>
+<p class="card-text" style="margin-bottom:1px;color:var(--bs-dark)">User account: {{order.user}} | {{order.user.id}}</p>
+<p class="card-text" style="margin-bottom:1px;color:var(--bs-dark);font-size:medium">Date: {{order.date}} </p>
+</div>
+</div>
+</a>
+{% endfor %}
+</div>
+</div>
+</div>
+</div>
+<div class="tab-pane" role="tabpanel" id="tab-2" style="background:var(--bs-white)">
+<div class="disabled-div">
+<div class="container">
+<div class="row" style="min-height:682px;height:auto">
+<div class="col-md-6" style="padding-right:0;min-height:682px;height:auto;padding-top:12px;padding-bottom:12px">
+<form style="margin-right:19px;min-height:682px;height:auto;border-color:var(--bs-gray)">
+<h1 class="text-center" style="font-family:Alatsi,sans-serif">Add Book</h1><label class="form-label" style="font-family:Alatsi,sans-serif">Title</label><input class="form-control" type="text" style="border:1px solid var(--bs-dark)"><label class="form-label" style="margin-top:5px;font-family:Alatsi,sans-serif">Author</label><select class="form-select" style="border:1px solid var(--bs-dark)">
+<optgroup label="This is a group">
+<option value="12" selected="">This is item 1</option>
+<option value="13">This is item 2</option>
+<option value="14">This is item 3</option>
+</optgroup>
+</select><label class="form-label" style="margin-top:5px;font-family:Alatsi,sans-serif">Summary</label><textarea class="form-control" style="border:1px solid var(--bs-dark)"></textarea><label class="form-label" style="margin-top:5px;font-family:Alatsi,sans-serif">ISBN</label><input class="form-control" type="text" style="border:1px solid var(--bs-dark)"><label class="form-label" style="margin-top:5px;font-family:Alatsi,sans-serif">Genre</label><select class="form-select" style="border:1px solid var(--bs-dark)">
+<optgroup label="This is a group">
+<option value="12" selected="">This is item 1</option>
+<option value="13">This is item 2</option>
+<option value="14">This is item 3</option>
+</optgroup>
+</select><label class="form-label" style="margin-top:5px;font-family:Alatsi,sans-serif">Language</label><select class="form-select" style="border:1px solid var(--bs-dark)">
+<optgroup label="This is a group">
+<option value="12" selected="">This is item 1</option>
+<option value="13">This is item 2</option>
+<option value="14">This is item 3</option>
+</optgroup>
+</select><label class="form-label" style="margin-top:5px;font-family:Alatsi,sans-serif">Price</label><input class="form-control" type="number" style="border:1px solid var(--bs-dark)"><button class="btn btn-primary" type="button" style="margin-top:23px;width:100%;background:var(--bs-warning);font-size:19px;font-family:Alatsi,sans-serif;border-style:solid;border-color:var(--bs-warning)">Add&nbsp;</button>
+</form>
+<form style="margin-right:19px;min-height:426px;height:auto;margin-top:12px;border-color:var(--bs-gray);border-bottom-style:solid">
+<h1 class="text-center" style="font-family:Alatsi,sans-serif">Add Store</h1><label class="form-label" style="font-family:Alatsi,sans-serif">City</label><input class="form-control" type="text" style="border:1px solid var(--bs-dark)"><label class="form-label" style="margin-top:5px;font-family:Alatsi,sans-serif">Contact</label><input class="form-control" type="text" style="border:1px solid var(--bs-dark)"><label class="form-label" style="margin-top:5px;font-family:Alatsi,sans-serif">Address</label><input class="form-control" type="number" style="border:1px solid var(--bs-dark)"><button class="btn btn-primary" type="button" style="margin-top:23px;width:100%;background:var(--bs-warning);font-size:19px;font-family:Alatsi,sans-serif;border-style:solid;border-color:var(--bs-warning)">Add&nbsp;</button>
+</form>
+<form style="margin-right:19px;min-height:426px;height:auto;margin-top:12px;border-color:var(--bs-gray);border-bottom-style:solid">
+<h1 class="text-center" style="font-family:Alatsi,sans-serif">Newsletter</h1><label class="form-label" style="font-family:Alatsi,sans-serif">Title</label><input class="form-control" type="text" style="border:1px solid var(--bs-dark)"><label class="form-label" style="margin-top:5px;font-family:Alatsi,sans-serif">Mail</label><textarea class="form-control" style="border:1px solid var(--bs-dark)"></textarea><input class="form-control" type="file" style="margin-top:14px;border:1px solid var(--bs-dark)"><button class="btn btn-primary" type="button" style="margin-top:23px;width:100%;background:var(--bs-warning);font-size:19px;font-family:Alatsi,sans-serif;border-style:solid;border-color:var(--bs-warning)">Add&nbsp;</button>
+</form>
+</div>
+<div class="col-md-6" style="padding-left:0;min-height:682px;height:auto;padding-bottom:13px;padding-top:12px">
+<form action="" id="search-form" method="get">
+<h1 class="text-center" style="font-family:Alatsi,sans-serif">Delete Book</h1>
+<div class="d-inline-flex" style="width:100%"><input class="form-control" type="search" id="id_search_query" name="search_query" style="border:1px solid var(--bs-dark)"><button class="btn btn-primary" type="submit" style="background:var(--bs-warning);border-color:var(--bs-warning);font-family:Alatsi,sans-serif;font-size:18px">Search</button></div>
+</form>
+<div class="d-inline-flex justify-content-center align-items-center justify-content-xl-center align-items-xl-center" style="width:100%;min-height:13px;height:auto">
+{% if filtered_book %}
+<ul>
+{% for book in filtered_book %}
+<li> <a href="{% url 'stores:book_detail' book.pk %}" id="result-section"><h5 style="font-family:Alatsi,sans-serif;margin-top:8px;color:var(--bs-red)">{{ book.title }} , Delete Book</h5>
+</a></li>
+{% endfor %}
+{% else %}
+</ul>
+{% endif %}
+</div>
+<form style="margin-top:19px;border-top-color:var(--bs-orange)">
+<h1 class="text-center" style="font-family:Alatsi,sans-serif">Add Author</h1><label class="form-label" style="font-family:Alatsi,sans-serif">Author Name</label><input class="form-control" type="text" style="border:1px solid var(--bs-dark)"><label class="form-label" style="font-family:Alatsi,sans-serif">Bio</label><textarea class="form-control" style="border:1px solid var(--bs-dark)"></textarea><button class="btn btn-primary" type="button" style="margin-top:23px;width:100%;background:var(--bs-warning);font-size:19px;font-family:Alatsi,sans-serif;border-style:solid;border-color:var(--bs-yellow)">Add&nbsp;</button>
+</form>
+<form style="margin-top:19px;border-top-color:var(--bs-yellow)">
+<h1 class="text-center" style="font-family:Alatsi,sans-serif">Add Genre</h1><label class="form-label" style="font-family:Alatsi,sans-serif">Genre Name</label><input class="form-control" type="text" style="border:1px solid var(--bs-dark)"><label class="form-label" style="font-family:Alatsi,sans-serif">Catagory</label><select class="form-select" style="border:1px solid var(--bs-dark)">
+<optgroup label="This is a group">
+<option value="12" selected="">This is item 1</option>
+<option value="13">This is item 2</option>
+<option value="14">This is item 3</option>
+</optgroup>
+</select><button class="btn btn-primary" type="button" style="margin-top:23px;width:100%;background:var(--bs-warning);font-size:19px;font-family:Alatsi,sans-serif;border-style:solid;border-color:var(--bs-yellow)">Add&nbsp;</button>
+</form>
+<form style="margin-top:19px;border-top:3px solid var(--bs-green)">
+<h1 class="text-center" style="font-family:Alatsi,sans-serif">Add Genre</h1><label class="form-label" style="font-family:Alatsi,sans-serif">Genre Name</label><input class="form-control" type="text" style="border:1px solid var(--bs-dark)"><label class="form-label" style="font-family:Alatsi,sans-serif">Catagory</label><select class="form-select" style="border:1px solid var(--bs-dark)">
+<optgroup label="This is a group">
+<option value="12" selected="">This is item 1</option>
+<option value="13">This is item 2</option>
+<option value="14">This is item 3</option>
+</optgroup>
+</select><button class="btn btn-primary" type="button" style="margin-top:23px;width:100%;background:var(--bs-warning);font-size:19px;font-family:Alatsi,sans-serif;border-style:solid;border-color:var(--bs-yellow)">Add&nbsp;</button>
+</form>
+<form style="margin-top:19px;border-top-color:var(--bs-orange)">
+<h1 class="text-center" style="font-family:Alatsi,sans-serif">Add Language</h1><label class="form-label" style="font-family:Alatsi,sans-serif">Language&nbsp;</label><input class="form-control" type="text" style="border:1px solid var(--bs-dark)"><button class="btn btn-primary" type="button" style="margin-top:23px;width:100%;background:var(--bs-warning);font-size:19px;font-family:Alatsi,sans-serif;border-style:solid;border-color:var(--bs-yellow)">Add&nbsp;</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-pane active" role="tabpanel" id="tab-3">
+<div style="margin-top:12px">
+<div class="container">
+<div class="row">
+<div class="col-md-3" style="width:100%">
+<div class="card" style="width:100%">
+<div class="card-body" style="width:100%">
+<h4 class="card-title" style="font-family:Alatsi,sans-serif;border-top-style:solid;border-bottom:1px solid var(--bs-secondary)">Total Books</h4>
+<h6 class="text-muted card-subtitle mb-2" style="border-bottom-style:solid">{{total_books}}&nbsp;</h6>
+<h4 class="card-title" style="font-family:Alatsi,sans-serif;border-top-style:solid;border-bottom:1px solid var(--bs-secondary)">Total Fictional Books</h4>
+<h6 class="text-muted card-subtitle mb-2" style="border-bottom-style:solid">Total&nbsp;</h6>
+<h4 class="card-title" style="font-family:Alatsi,sans-serif;border-top-style:solid;border-bottom:1px solid var(--bs-secondary)">Total Non - Fictional Books</h4>
+<h6 class="text-muted card-subtitle mb-2" style="border-bottom-style:solid">Total&nbsp;</h6>
+<h4 class="card-title" style="font-family:Alatsi,sans-serif;border-top-style:solid;border-bottom:1px solid var(--bs-secondary)">Total Children's Books</h4>
+<h6 class="text-muted card-subtitle mb-2" style="border-bottom-style:solid">Total&nbsp;</h6>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+{% else %}
+<div class="global-container mt-5">
+<div class="card">
+<div class="card-body">
+<h3 class="card-title text-center">This panel is only for Administration!</h3>
+<div class="card-text text-center">
+</div>
+</div>
+</div>
+</div>
+{% endif %}
+</main>
+{% endblock %}

@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<main class="page landing-page">
+    <section class="clean-block clean-post dark" style="padding-top: 5px;padding-bottom: 0px;background: var(--bs-white);min-height: none;height: auto;">
+        <div class="container" style="height: auto;min-height: 1973px;padding-left: 0px;">
+            <div class="post-body" style="padding-right: 10px;padding-left: 10px;padding-top: 30px;min-height: none;height: 100%;padding-bottom: 76px;">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-danger">
+                {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                <figure class="figure"
+                        style="min-width: 5px;width: 96%;margin-left: 2%;border-bottom-style: solid;"><video width="560" height="315"
+                        autoplay="" loop="" muted="" style="height: auto;width: 100%;">
+                        <source src="https://cdn.jsdelivr.net/gh/HuzaifaYasin910/statics@main/NOVELS.mp4"
+                            type="video/mp4">
+                    </video>
+                        <figcaption class="figure-caption"
+                            style="font-family: Alatsi, sans-serif;color: var(--bs-orange);font-size: 15px;">
+                            Recommendation</figcaption><a href="#">
+                            <h3
+                                style="padding-top: 5px;padding-bottom: 5px;font-family: Alatsi, sans-serif;color: var(--bs-dark);">
+                                Visit our store to get the most interesting stories ,novels ,fictional books and much
+                                more.</h3>
+                        </a>
+                    </figure>
+
+<!--========================================================================================================================================================================================-->
+
+<div class="row" style="margin-top: 20px;width: 96%;margin-left: 2%;margin-right: 0px;">
+    <div class="col" style="padding-top: 2px;">
+        <div class="row">
+            <div class="col-md-8 text-center" style="padding-right: 0px;padding-left: 6px;">
+                <h3 class="text-capitalize text-center" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom"  style="font-size: 22.4px;font-family: Alatsi, sans-serif;width: 95%;background: var(--bs-orange);filter: saturate(171%);margin-bottom: 0px;height: 27px;margin-left: 2.5%;">Search books</h3>
+                <form style="width: 100%;">
+                    <div style="width: 100%;margin-bottom: 0px;height: auto;border-bottom-style: solid;min-height: 265px;margin-left: 0px;">
+                        <div class="text-center d-flex align-items-center form-row" style="margin-top: 89px;width: 70%;margin-left: 15%;height: 59px;">
+                            <div class="col-sm form-group mb-3" style="background: var(--bs-orange);width: auto;border-radius: 8px;"><input type="text" class="form-control ps-4 pe-4 rounded-pill"
+                                id="id_search_query" name="search_query"
+                                placeholder="Search..."
+                                style="border-radius: 0px;filter: saturate(200%);border-width: 2px;border-color: var(--bs-orange);border-right-width: 0px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;height: 39px;"
+                                autocomplete="on"></div>
+                            <div class="col-sm-auto text-end form-group mb-3"><button class="btn btn-primary" type="submit" style="width: 54.85939999999999px;background: var(--bs-orange);border-radius: 7px;height: 39px;filter: saturate(200%);border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -6px;border-color: var(--bs-orange);border-bottom-color: var(--bs-orange);border-left-width: 0px;border-left-color: var(--bs-orange);"><i class="fa fa-search" style="margin-left: 0px;"></i></button></div>
+                        </div>
+                        <div style="width: 70%;margin-left: 15%;">
+                            <p class="text-center" style="font-family: Alatsi, sans-serif;">suggestions<br></p>
+                            {% if filtered_book %}
+                            <ul>
+                                {% for book in filtered_book %}
+                                <li><a href="{% url 'stores:book_detail' book.pk %}"
+                                        id="result-section">{{ book.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                            {% else %}
+                            <p></p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="col-md-4" style="padding-top: 6px;"><img src="https://cdn.jsdelivr.net/gh/StaticUser123/statics@main/chart.png" style="width: 100%;"></div>
+        </div>
+    </div>
+</div>
+
+<!--========================================================================================================================================================================================-->
+
+                <div class="row" style="margin-right: 0px;margin-left: 2%;margin-top: 20px;border-top-style: solid;width: 96%;padding-top: 10px;">
+                    <div class="col-md-6" style="width: 50%;margin-left: 0%;padding-right: 0px;padding-left: 0px;border-right: 1px solid var(--bs-gray) ;border-left-width: 1px;border-left-color: var(--bs-gray);">
+                        <figure class="figure" style="width: 92%;margin-left: 3%;"><a href=""><img class="rounded img-fluid figure-img" src="https://cdn.jsdelivr.net/gh/StaticUser123/statics@main/Tales%20of%20INDIA%20Coming%20soon.png" alt="A generic square placeholder image with rounded corners in a figure." style="max-width: 100%;width: 100%;margin-bottom: 5px;">
+                            <h4 style="font-size: 17px;padding: 0px;font-family: Alatsi, sans-serif;color: var(--bs-orange);">Coming soon</h4>
+                                <h4 style="font-size: 28px;padding: 0px;font-family: Alatsi, sans-serif;color: var(--bs-dark);">Tales of India</h4>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="col-md-6" style="width: 50%;margin-left: 0%;padding-right: 0px;padding-left: 0px;">
+                        <figure class="figure" style="width: 92%;margin-left: 3%;"><a href="{% url 'stores:suggestions' %}"><img class="rounded img-fluid figure-img" src="https://cdn.jsdelivr.net/gh/StaticUser123/statics@main/The%20Boy%20Who%20Lived%20.gif" alt="A generic square placeholder image with rounded corners in a figure." style="max-width: 100%;width: 100%;margin-bottom: 5px;">
+                            <figcaption class="figure-caption" style="font-family: Alatsi, sans-serif;color: var(--bs-orange);font-size: 17px;filter: saturate(200%);">Reading Lists</figcaption>
+                                <h4 style="font-size: 28px;padding: 0px;font-family: Alatsi, sans-serif;color: var(--bs-dark);"><strong>All time best-selling novels</strong><br></h4>
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-right: 0px;margin-left: 2%;margin-top: 20px;border-top-style: solid;width: 96%;padding-top: 10px;">
+                    <div class="col-md-6" style="width: 50%;margin-left: 0%;padding-right: 0px;padding-left: 0px;border-right: 1px solid var(--bs-gray) ;border-left-width: 1px;border-left-color: var(--bs-gray);">
+                        <figure class="figure" style="width: 92%;margin-left: 3%;"><a href="{% url 'stores:children_genres' %}"><img class="rounded img-fluid figure-img" src="https://cdn.jsdelivr.net/gh/StaticUser123/statics@main/-Novels%26Notion-.png" alt="A generic square placeholder image with rounded corners in a figure." style="max-width: 100%;width: 100%;margin-bottom: 5px;">
+                            <h4 style="font-size: 17px;padding: 0px;font-family: Alatsi, sans-serif;color: var(--bs-orange);">Children's read</h4>
+                                <h4 style="font-size: 28px;padding: 0px;font-family: Alatsi, sans-serif;color: var(--bs-dark);">Exciting children's book</h4>
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="col-md-6" style="width: 50%;margin-left: 0%;padding-right: 0px;padding-left: 0px;">
+                        <figure class="figure" style="width: 92%;margin-left: 3%;"><a href="{% url 'stores:articles' %}"><img class="rounded img-fluid figure-img" src="https://cdn.jsdelivr.net/gh/StaticUser123/statics@main/Prepared%20for.png" alt="A generic square placeholder image with rounded corners in a figure." style="max-width: 100%;width: 100%;margin-bottom: 5px;">
+                            <figcaption class="figure-caption" style="font-family: Alatsi, sans-serif;color: var(--bs-orange);font-size: 17px;filter: saturate(200%);">Articles Lists</figcaption>
+                                <h4 style="font-size: 28px;padding: 0px;font-family: Alatsi, sans-serif;color: var(--bs-dark);"><strong>These articles can be helpful...</strong><br></h4>
+                            </a>
+                        </figure>
+                    </div>
+                </div>
+<!--========================================================================================================================================================================================-->
+
+                <div class="row" style="margin-left: 2.5%;margin-top: 20px;border-top-style: solid;width: 96%;">
+                    <div class="col-md-6" style="width: 100%;margin-left: 0%;padding-right: 0px;padding-left: 0px;border-right-width: 1px;border-bottom-style: solid;border-left-width: 1px;border-left-color: var(--bs-gray);padding-top: 10px;">
+                        <figure class="figure" style="width: 94%;margin-left: 3%;"><video width="560" height="315" autoplay="" loop="" muted="" style="height: auto;width: 100%;">
+                                <source src="https://cdn.jsdelivr.net/gh/StaticUser123/statics@main/Find%20every.mp4" type="video/mp4">
+                            </video><a href="{% url 'stores:stores' %}">
+                                <h4 style="font-size: 17px;padding: 0px;font-family: Alatsi, sans-serif;color: var(--bs-orange);">Check Stores &gt;&gt;</h4>
+                            </a></figure>
+                    </div>
+                </div>
+<!--========================================================================================================================================================================================-->
+
+<section class="login-clean" style="background: var(--bs-white);padding-top: 70px;padding-bottom: 0px;" id="newsletter">
+    <form method="post" style="border-style: solid;">
+        {% csrf_token %}
+        <h2 class="visually-hidden">Login Form</h2>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-info">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        <h4 class="text-center" style="font-family: Alatsi, sans-serif;height: 40px;padding-top: 0px;padding-bottom: 0px;">Join our Newsletter</h4>
+        <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email" style="font-family: 'Anonymous Pro', monospace;"></div>
+        <div class="mb-3"><input class="form-control" type="text" name="name" placeholder="username" style="font-family: 'Anonymous Pro', monospace;"></div>
+        <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" style="background: var(--bs-orange);font-family: Alatsi, sans-serif;">Join</button></div>
+    </form>
+</section>
+<!--========================================================================================================================================================================================-->
+
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

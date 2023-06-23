@@ -1,0 +1,44 @@
+{% if newsletter %}
+<body style="font-family: 'Roboto', Arial, sans-serif; background-color: #f5f5f500;padding: 40px;">
+    <div class="content" style="width: 70%; margin: 0 auto; padding: 20px; background-color: #fff;height: 400px;">
+        <h1 style="color: rgb(255, 136, 0); border-bottom: 2px solid grey;">Novels & Notions</h1>
+        <p style="font-family: 'Roboto', Arial, sans-serif;text-align: center;">
+            Thank you for signing up for our newsletter.
+        </p>
+        
+        <p class="thank-you" style="font-size: 15px; color: #555; margin-top: 20px; ">
+            Thank you once again for subscribing. We look forward to sharing exciting news and updates with you and  We're excited to have you on board!
+        </p>
+        <a href="https://huzaifayasin.pythonanywhere.com/home/"><button style="height: 30px;width: 150px;background-color: rgb(255, 136, 0) ; border:none;border-radius: 5px; margin-top: 30px;font-family: Arial;font-weight: 600;">Visit N&N Library</button></a>
+        <p class="thank-you" style="font-size: 15px; color: #555; margin-top: 20px; ">
+           Happy reading!<br>N&N Team
+        </p>
+        <p style="border-top: 2px solid grey;font-family: 'Roboto', Arial, sans-serif;text-align: center;padding: 5px;font-size: 10px;">
+            &copy;2023 Novels&Notions - A book store company
+        </p><br><br>
+    </div>
+</body>
+{% elif authentication %}
+<body style="font-family: 'Roboto', Arial, sans-serif; background-color: #f5f5f500;padding: 40px;">
+    <div class="content" style="width: 90%; margin: 0 auto; padding: 20px; background-color: #fff;height: 400px;">
+        <h1 style="color: rgb(255, 136, 0); border-bottom: 2px solid grey;">Novels & Notions</h1>
+        <p style="font-family: 'Roboto', Arial, sans-serif;text-align: center;">
+            Authetication for your account
+        </p>
+        
+        <p class="thank-you" style="font-size: 15px; color: #555; margin-top: 20px; ">
+            To ensure the security of your account and activate its full functionality, we kindly ask you to verify your email address. Please click on the verification link below. 
+        </p>
+        <a href="http://127.0.0.1:8000/verify/{{token}}"><button style="height: 30px;width: 150px;background-color: rgb(255, 136, 0) ; border:none;border-radius: 5px; margin-top: 30px;font-family: Arial;font-weight: 600;">Verify my account</button></a>
+        <p class="thank-you" style="font-size: 15px; color: #555; margin-top: 20px; ">
+            It also helps us maintain a safe and trustworthy environment for all our users. If you did not create this account or believe this email was sent to you by mistake, please disregard it. <br><br><br>  Best regards,<br>N&N Team
+        </p>
+        <p style="border-top: 1px solid rgb(194, 194, 194);font-family: 'Roboto', Arial, sans-serif;text-align: center;padding: 5px;font-size: 10px;">
+            &copy;2023 Novels&Notions - A book store company
+        </p><br><br>
+    </div>
+</body>
+
+{% else %}
+error email
+{% endif %}
