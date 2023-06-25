@@ -1,27 +1,19 @@
-from django.shortcuts import render
 from .models import *
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import *
 from django.http import HttpRequest, HttpResponse , JsonResponse
 from django.views.generic import CreateView,View
-from django.urls import reverse_lazy
 from .filters import BookFilter
-import random
-from django.contrib import messages
 import os
 from .utility import *
-
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
-from typing import Protocol
-from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate, get_user_model
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required,user_passes_test
 from django.contrib.admin.views.decorators import staff_member_required
 from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.core.paginator import Paginator
 
 
@@ -126,7 +118,6 @@ def home(request):
     return render(request, 'stores/index.html',{'form':form,'filtered_book':filtered_book})
 
 
-
 def admin_local(request):
   if is_admin(request.user):
     orders = Order.objects.all()
@@ -167,7 +158,8 @@ def orders_view(request, book_id ):
             form = CheckoutForm()
         return render(request, 'stores/order.html', {"book": order, 'form': form})
     else:
-        return HttpResponse('profile problem')
+        messages.success(request, 'You have to login first to make orders.')
+        return render(request,'accounts/login.html')
 
 
 def order_action_view(request,order_id):

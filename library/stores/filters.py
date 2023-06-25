@@ -1,5 +1,5 @@
 from django.db.models import Q
-import django_filters
+from stores import django_filters
 from .models import *
 
 class BookFilter(django_filters.FilterSet):
