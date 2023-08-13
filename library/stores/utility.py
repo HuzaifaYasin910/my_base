@@ -13,8 +13,8 @@ from .filters import *
 import os
 from .forms import SubscribersForm
 
-EMAIL_ADDRESS  = 'novelsnotions@gmail.com'
-EMAIL_PASSWORD = 'tsojwmidjtrgnavv'
+EMAIL_ADDRESS  = 'Your email address' # Your email address
+EMAIL_PASSWORD = 'your password' # your password
 
 
 

@@ -6,8 +6,8 @@ from django.contrib import messages
 from .models import *
 from stores.utility import mail_test
 import uuid
-EMAIL_ADDRESS  = 'novelsnotions@gmail.com'
-EMAIL_PASSWORD = 'tsojwmidjtrgnavv'
+EMAIL_ADDRESS  = 'Your email address' # Your email address
+EMAIL_PASSWORD = 'your password' # your password
 from django.conf import settings
 from stores.models import Order
 from django.contrib.auth import logout
@@ -135,6 +135,7 @@ def send_email(email,token):
     server.send_message(msg)
     server.quit()
 
+    
 
 
 def error_page(request):
